@@ -1,4 +1,4 @@
-# Meeting Size Nudger (Google Apps Script)
+# Too Many People in Meetings (Google Apps Script)
 
 Automatically warns Google Calendar event organizers when too many internal guests are invited to a meeting.
 
