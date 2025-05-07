@@ -1,4 +1,4 @@
-var INTERNAL_DOMAINS = ['mediacurrent.com', 'rhythmagency.com'];
+var INTERNAL_DOMAINS = ['mediacurrent.com', 'rhythmagency.com', 'codeandtheory.com',];
 var THRESHOLD = 4;
 
 function checkRecentEvents() {
