@@ -3,7 +3,7 @@
 Automatically warns Google Calendar event organizers when too many internal guests are invited to a meeting.
 
 ## Features
-- Checks for internal invitees from defined domains (e.g. `mediacurrent.com`, `rhythmagency.com', 'codeandtheory.com',)
+- Checks for internal invitees from defined domains (e.g. `mediacurrent.com`, `rhythmagency.com`,  `codeandtheory.com`,)
 - Sends an email if the number exceeds a defined threshold (default is 4)
 - Prevents duplicate warnings per event
 
