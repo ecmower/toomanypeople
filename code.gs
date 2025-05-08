@@ -1,9 +1,10 @@
 var INTERNAL_DOMAINS = ['mediacurrent.com', 'rhythmagency.com', 'codeandtheory.com',];
 var THRESHOLD = 4;
+var MINUTES = 10;
 
 function checkRecentEvents() {
   var now = new Date();
-  var lookAhead = new Date(now.getTime() + 10 * 60 * 1000);
+  var lookAhead = new Date(now.getTime() + MINUTES * 60 * 1000);
   var calendar = CalendarApp.getDefaultCalendar();
   var events = calendar.getEvents(now, lookAhead);
   var props = PropertiesService.getScriptProperties();
@@ -12,10 +13,17 @@ function checkRecentEvents() {
     var event = events[i];
     var eventId = event.getId();
 
+    // Skip when the email has already been warned.
     if (props.getProperty(eventId)) {
       continue;
     }
 
+    // Skip if you aren't the owner.
+    var creators = event.getCreators();
+    if (creators.length > 0 && creators[0] !== Session.getActiveUser().getEmail()) {
+      props.setProperty(eventId, 'skipped');
+      continue;
+    }
     var attendees = event.getGuestList();
     var internalGuests = attendees.filter(function (guest) {
       var email = guest.getEmail();
